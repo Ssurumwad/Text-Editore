@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>text-editore</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/5902d031c3.js" crossorigin="anonymous"></script>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+
+		}
+		.box{
+			margin-top: 100px;
+			border: 2px solid black	;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 80%;
+			height:115%;
+			background-color: wheat; 
+
+		}
+		.box2{
+			width: 100%;
+			height: 150px;
+			border-bottom: 2px solid black;
+			margin-right: 2px;
+			background-color: white;
+			
+		}
+		button{
+			border: none;
+			outline: 1px solid blue;
+			margin: 10px;
+
+		}
+		button:hover{
+			background-color: grey;
+			color:white;!important
+		}
+		textarea{
+			width: 80%;
+			height: 77vh;
+			margin-left: 190px;
+		}
+		.font-style{
+			width: 150px;
+			height: 120px;
+			border-right: 2px solid black;
+			position: absolute;
+			top: 10px;
+			left: 2px;
+		}
+		.font-style button{
+			width: 10px;
+			height: 30px;
+		}
+		.font-style b{
+			margin: -10px;
+	
+			
+		}
+		.position{
+			width: 171px;
+			height: 120px;
+			border-right: 2px solid black;
+			position: absolute;
+			top: 10px;
+			left: 140px;
+			margin-top:0px;
+		}
+		.font-case{
+			
+			width: 246px;
+			height: 120px;
+			border-right: 2px solid black;
+			position: absolute;
+			top: 10px;
+			left: 311px;
+		}
+		.color{
+			width: 227px;
+			height: 120px;
+			border-right: 2px solid black;
+			position: absolute;
+			top: 10px;
+			left: 573px;
+		}
+		.color button{
+			width: 30px;
+		}
+		.bgcolor{
+			width: 234px;
+			height: 120px;
+			position: absolute;
+			top: 10px;
+			left: 793px;
+			border-right: 1px solid black;
+		}
+		span{
+			font-size: 20px;
+			margin-right: 10px;
+		}
+		
+		input[type="color"]{
+		 border:none;
+
+		}
+		#font-size{
+			position: absolute;
+			top: 87.5px;
+			left: 100px;
+			width: 45px;
+			border: 1px solid black;
+
+		}
+		
+		.font-section{
+			width: 50px;
+			height: 200px;
+			position: absolute;
+			top: 10px;
+			right: 200px;
+		}
+		.font-style p{
+			margin-top: 10px;
+			margin-right: 35px;
+			font-size: 17.1px;
+			border: 1px solid black;
+			width: 90px;
+			padding-right: 10px;
+			border-right: 1px solid black;
+		}
+		.fonts{
+			height: 77vh;
+			width: 150px;
+			background-color: white;
+			outline: 1px solid black;
+			position: absolute;
+			top: 200px;
+			left: 10px;
+			overflow: scroll;
+		}
+		 .fonts button{
+		 	outline: none;
+		 	font-size: 20px;
+		 	margin-left: 0px;
+		 	background-color: transparent;
+		 	border-bottom: 1px solid black;
+		 }
+		 .fonts button:hover{
+		 	color: blue;
+		 }
+		 .select{
+		 	position: absolute;
+		 	top: 160px;
+		 	left:30px;
+		 	font-size: 20px;
+		 	color: blue;
+
+		 }
+	</style>
+</head>
+<body>
+<section>
+	<h1 align="center">TEXT-EDITOR</h1>
+	
+<div align="center" class="box">
+	
+	<div class="box2" id="section">
+<div class="font-style">
+	<h6>font-style</h6>
+<button class="btn" type="button" onclick="bold()"> <b>B</b> </button>
+<button class="btn"onclick="italic()"><b>I</b></button>
+<button class="btn" onclick="underline()"> <b>U</b> </button>
+<p>Font-size</p>
+
+<input type="number" id="font-size" min="1"max="200" value="10" onchange="font(this)">
+</div>
+
+
+<div class="position">
+	<h6>Text-Position</h6>
+<button class="btn" onclick="left()"><i class="fa-solid fa-align-left"></i></button>
+<button class="btn" onclick="right()"><i class="fa-solid fa-align-right"></i></button> <br>
+<button class="btn" onclick="center()"><i class="fa-solid fa-align-center"></i></button>
+</div>
+<div class="font-case">
+					<h6>Text-case</h6>
+<button class="btn" onclick="uppercase()">uppercase</button>
+<button class="btn" onclick="lowercase()">Lowercase </button>
+<button class="btn" onclick="capitalize()">capitalise</button>
+</div>
+<div class="color">
+					<h6>Font-color</h6>
+<button class="btn" onclick="red()" style="background: red;"></button>
+<button class="btn" onclick="green()"style="background: green;"></button>
+<button class="btn" onclick="blue()" style="background: blue;"></button>
+<button class="btn" onclick="pink()"style="background: pink;"></button>
+<button class="btn" onclick="purple()"style="background: purple;"></button>
+<button class="btn" onclick="orange()"style="background: orange;"></button>
+<button class="btn" onclick="white()"style="background: white;"></button>
+<button class="btn" onclick="yellow()" style="background:yellow;"></button>
+<button class="btn" onclick="black()" style="background:black;"></button>
+<button class="btn" onclick="gray()" style="background:gray;"></button>
+<button class="btn" onclick="brown()" style="background:brown;"></button>
+<button class="btn" onclick="Aqua()" style="background:Aqua;"></button>
+ 
+
+</div>
+
+<!-- background color-->
+<div class="bgcolor">
+		<h6>page-color</h6>
+<button class="btn" onclick="bgred()" style="background: red;"></button>
+<button class="btn" onclick="bggreen()"style="background: green;"></button>
+<button class="btn" onclick="bgblue()" style="background: blue;"></button>
+<button class="btn" onclick="bgpink()"style="background: pink;"></button>
+<button class="btn" onclick="bgpurple()"style="background: purple;"></button>
+<button class="btn" onclick="bgorange()"style="background: orange;"></button>
+<button class="btn" onclick="bgwhite()"style="background: white;"></button>
+<button class="btn" onclick="bgblack()" style="background: black;"></button>
+<button class="btn" onclick="bgyellow()" style="background:yellow;"></button>
+<button class="btn" onclick="bglime()" style="background:lime;"></button>
+<button class="btn" onclick="bgvoilet()" style="background:brown;"></button>
+<button class="btn" onclick="bgcyan()" style="background:cyan;"></button>
+</div>
+
+
+<!-- Clear and download button-->
+<div style="position: absolute;
+			top: 0px;
+			left: 1000px;">
+			<button type="button" onclick="f10()" class="btn shadow-sm btn-outline-primary side" data-toggle="tooltip" data-placement="top" title="Download">Download</button>
+<button class="btn shadow-sm btn-outline-primary side clear" onclick="Clear1() ">clear All </button>
+</div>
+<!-- fonts -->
+<p class="select"> Select Font </p>
+<div class="fonts">
+	<button onclick="l1()">times new roman</button>
+	<button onclick="l2()">Algerian</button>
+	<button onclick="l3()">Arial Black</button>
+	<button onclick="l4()">Castellar</button>
+	<button onclick="l5()">Wide Latin</button>
+	<button onclick="l6()">Brush Script MT</button>
+	<button onclick="l7()">Book Antiqua</button>
+	<button onclick="l8()">Comic Sans MS</button>
+	<button onclick="l9()">Harlow Solid Italic</button>
+	<button onclick="l10()">Stencil</button>
+	<button onclick="l11()">Arial Narrow</button>
+	<button onclick="l12()">Bodoni MT Poster Compressed</button>
+	<button onclick="l13()">Arial</button><br>
+	<button onclick="l14()">Consolas</button>
+	<button onclick="l15()">Monotype Corsiva</button>
+	
+</div>
+</div>
+<textarea row="200"cols="100" class="mt-5" id="windows"></textarea>
+<h5 style="text-align:center; margin-top: 5px;" >Copyright by <b><i>satish surumwad</i></b> ©2023 All rights reserved.
+  </h5>
+</div>
+
+</section>
+
+<script>
+	/* font- styli*/
+	function bold() {
+		document.getElementById('windows').style.fontWeight="bold";
+		
+		}
+		function italic() {
+		document.getElementById('windows').style.fontStyle="italic";
+		}
+		function underline() {
+		document.getElementById('windows').style.textDecoration="underline";
+		}
+
+		/* navigation*/
+
+		function left() {
+		document.getElementById('windows').style.textAlign="left";
+		}
+		function right() {
+		document.getElementById('windows').style.textAlign="right";
+		}
+		function center() {
+		document.getElementById('windows').style.textAlign="center";
+		}
+
+		/*font-case*/
+		function uppercase() {
+		document.getElementById('windows').style.textTransform="uppercase";
+		}
+		function lowercase() {
+		document.getElementById('windows').style.textTransform="lowercase";
+		}
+		function capitalize() {
+		document.getElementById('windows').style.textTransform="capitalize";
+		}
+
+		/*text-color starts */
+		function more(e){
+			var value = e.target.value;
+			windows.style.color = value;
+		}
+		function red() {
+		document.getElementById('windows').style.color="red";
+		}
+		function blue() {
+		document.getElementById('windows').style.color="blue";
+		}
+		function green() {
+		document.getElementById('windows').style.color="green";
+		}
+		function purple() {
+		document.getElementById('windows').style.color="purple";
+		}
+		function voilet() {
+		document.getElementById('windows').style.color="voilet";
+		}
+		function Aqua() {
+		document.getElementById('windows').style.color="aqua";
+		}
+		function cyan() {
+		document.getElementById('windows').style.color="cyan";
+		}
+		
+		function white() {
+		document.getElementById('windows').style.color="white";
+		}
+		function black() {
+		document.getElementById('windows').style.color="black";
+		}
+		function yellow() {
+		document.getElementById('windows').style.color="yellow";
+		}
+		function pink() {
+		document.getElementById('windows').style.color="pink";
+		}
+		function orange() {
+		document.getElementById('windows').style.color="orange";
+		}
+		function lime() {
+		document.getElementById('windows').style.color="lime";
+		}
+		function gray() {
+		document.getElementById('windows').style.color="gray";
+		}
+
+		/* background color*/
+			function bgred() {
+		document.getElementById('windows').style.backgroundColor="red";
+		}
+		function bgblue() {
+		document.getElementById('windows').style.backgroundColor="blue";
+		}
+		function bggreen() {
+		document.getElementById('windows').style.backgroundColor="green";
+		}
+		function bgpurple() {
+		document.getElementById('windows').style.backgroundColor="purple";
+		}
+		function bgvoilet() {
+		document.getElementById('windows').style.backgroundColor="brown";
+		}
+		function bgaqua() {
+		document.getElementById('windows').style.backgroundColor="aqua";
+		}
+		function bgcyan() {
+		document.getElementById('windows').style.backgroundColor="cyan";
+		}
+		
+		function bgwhite() {
+		document.getElementById('windows').style.backgroundColor="white";
+		}
+		function bgblack() {
+		document.getElementById('windows').style.backgroundColor="black";
+		}
+		function bgyellow() {
+		document.getElementById('windows').style.backgroundColor="yellow";
+		}
+		function bgpink() {
+		document.getElementById('windows').style.backgroundColor="pink";
+		}
+		function bgorange() {
+		document.getElementById('windows').style.backgroundColor="orange";
+		}
+		function bglime() {
+		document.getElementById('windows').style.backgroundColor="lime";
+		}
+		function bgaqua() {
+		document.getElementById('windows').style.backgroundColor="aqua";
+		}
+/*background color ends here*/
+
+/* font-size*/
+		function font(e){
+			let value = e.value;
+			windows.style.fontSize = value + 'px';
+		}
+
+
+
+		function Clear1() {
+			document.getElementById('windows').style.fontWeight="normal";
+			document.getElementById('windows').style.textAlign="left";
+			document.getElementById('windows').style.fontStyle="normal";
+			document.getElementById('windows').style.textTranform="capitalise";
+			document.getElementById('windows').style.backgroundColor="white";
+			document.getElementById('windows').style.color="black";
+		document.getElementById('windows').value=" ";
+		}
+		function section(){
+			document.getElementById('section')
+		}
+	function l1(){
+		document.getElementById('windows').style.fontFamily='times new roman';
+	}
+	function l2(){
+		document.getElementById('windows').style.fontFamily='Algerian';
+	}
+	function l3(){
+		document.getElementById('windows').style.fontFamily='Arial Black';
+	}
+	function l4(){
+		document.getElementById('windows').style.fontFamily='Castellar';
+	}
+	function l5(){
+		document.getElementById('windows').style.fontFamily='Wide Latin';
+	}
+	function l6(){
+		document.getElementById('windows').style.fontFamily='Brush Script MT';
+	}
+	function l7(){
+		document.getElementById('windows').style.fontFamily='Book Antiqua';
+	}
+	function l8(){
+		document.getElementById('windows').style.fontFamily='Comic Sans MS';
+	}
+	function l9(){
+		document.getElementById('windows').style.fontFamily='Harlow Solid Italic';
+	}
+	function l10(){
+		document.getElementById('windows').style.fontFamily='Stencil';
+	}
+	function l11(){
+		document.getElementById('windows').style.fontFamily='Arial Narrow';
+	}
+	function l12(){
+		document.getElementById('windows').style.fontFamily='Bodoni MT Poster Compressed';
+	}
+	function l13(){
+		document.getElementById('windows').style.fontFamily='Arial';
+	}
+	function l14(){
+		document.getElementById('windows').style.fontFamily='Consolas';
+	}
+	function l15(){
+		document.getElementById('windows').style.fontFamily='Monotype Corsiva';
+	}
+
+function f10() {
+  const content = document.getElementById("windows").value;
+  const textArea = document.getElementById("windows");
+  const style = `
+    font-weight: ${textArea.style.fontWeight};
+    font-style: ${textArea.style.fontStyle};
+    text-decoration: ${textArea.style.textDecoration};
+    text-align: ${textArea.style.textAlign};
+    text-transform: ${textArea.style.textTransform};
+    color: ${textArea.style.color};
+    background-color: ${textArea.style.backgroundColor};
+    font-size: ${textArea.style.fontSize};
+    font-family: ${textArea.style.fontFamily};
+  `;
+
+  const formattedHTML = `
+    <html>
+    <head>
+      <title>Formatted Text</title>
+      <style>
+        body {
+          ${style}
+        }
+      </style>
+    </head>
+    <body>
+      ${content.replace(/\n/g, '<br>')}
+    </body>
+    </html>
+  `;
+
+  const blob = new Blob([formattedHTML], { type: "text/html" });
+  const save = document.createElement("a");
+  save.setAttribute("href", URL.createObjectURL(blob));
+  save.setAttribute("download", "formatted_text.html");
+  document.body.appendChild(save);
+  save.click();
+  document.body.removeChild(save);
+}
+
+	
+</script>
+</body>
+</html>
